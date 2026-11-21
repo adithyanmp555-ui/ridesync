@@ -2,9 +2,9 @@
 
 ## Inspection findings
 
-The connected GitHub repository `adithyanmp555-ui/ridesync` is public and has size 0 on its `main` branch. It contains no committed files to inspect. The separate GitHub repository `adithyanmp555-ui/RideConnect` is private and also reports size 0. Neither repository name was changed.
+At inspection time, the connected GitHub repository `adithyanmp555-ui/ridesync` was public and empty on its `main` branch. The separate GitHub repository `adithyanmp555-ui/RideConnect` was private and also empty. Neither repository name was changed.
 
-The local folder `Documents/ridesync` contains a Kotlin Multiplatform starter project, but it is not connected to either GitHub repository in this environment. The local project was treated as the source to preserve while making the initial app identity changes.
+The local folder `Documents/ridesync` contains a Kotlin Multiplatform starter project, but it was not a Git checkout. I treated it as the source to preserve, then imported its project files into the empty `ridesync` repository. Generated output, IDE caches, and machine-specific `local.properties` were excluded.
 
 ## Existing local project
 
@@ -35,12 +35,14 @@ The build also emitted a warning that the installed Android SDK tooling encounte
 
 The shell's Android Gradle Plugin also attempted to write analytics settings under `C:\.android`; Android Studio's normal per-user Android configuration is under the Windows user profile. The iOS simulator test target is disabled on Windows, as expected.
 
-The local folder is not linked to GitHub and the `git` executable is unavailable in this shell. Therefore, these local Stage 1 changes have not been committed or synchronized to `adithyanmp555-ui/ridesync`. Do not start later stages against an assumed GitHub copy until this repository/source mismatch is resolved.
+The local folder still is not a Git checkout and the `git` executable is unavailable in this shell. The inspected source and Stage 1 changes have been committed directly to `adithyanmp555-ui/ridesync` on `main` in two commits: `docs: add RideSync project setup` and `chore: import existing RideSync starter project`. The project is now in GitHub, but the local folder will not automatically receive future remote changes.
 
 ## Next setup actions
 
-1. Open the local `Documents\ridesync` folder in Android Studio.
-2. Confirm **Settings → Build, Execution, Deployment → Build Tools → Gradle → Gradle JDK** points to the bundled JDK.
-3. Allow Android Studio to sync and download required Gradle and Android build components.
-4. Run **Build → Make Project** and resolve any SDK or dependency setup prompts.
-5. Decide how to connect or import this local starter into the intended GitHub repository without overwriting any existing work.
+1. In GitHub Desktop, select **File → Clone repository → URL** and enter `https://github.com/adithyanmp555-ui/ridesync.git`. Choose a folder such as `Documents\ridesync-github` so the existing local starter stays untouched.
+2. In Android Studio, open the cloned `ridesync-github` folder.
+3. Confirm **Settings → Build, Execution, Deployment → Build Tools → Gradle → Gradle JDK** points to Android Studio's bundled JDK.
+4. Allow Android Studio to sync and download required Gradle and Android build components.
+5. Run **Build → Make Project**. If the SDK XML warning remains, open **Tools → SDK Manager → SDK Tools** and update **Android SDK Command-line Tools**.
+6. Confirm a debug APK appears at `androidApp\build\outputs\apk\debug\androidApp-debug.apk` before starting Stage 2.
+
