@@ -35,7 +35,7 @@ The build also emitted a warning that the installed Android SDK tooling encounte
 
 The shell's Android Gradle Plugin also attempted to write analytics settings under `C:\.android`; Android Studio's normal per-user Android configuration is under the Windows user profile. The iOS simulator test target is disabled on Windows, as expected.
 
-The local folder still is not a Git checkout and the `git` executable is unavailable in this shell. The inspected source and Stage 1 changes have been committed directly to `adithyanmp555-ui/ridesync` on `main` in two commits: `docs: add RideSync project setup` and `chore: import existing RideSync starter project`. The project is now in GitHub, but the local folder will not automatically receive future remote changes.
+The local folder still is not a Git checkout and the `git` executable is unavailable in this shell. The inspected source and Stage 1 changes have been committed directly to `adithyanmp555-ui/ridesync` on `main` (initial setup, project import, and status report). The project is now in GitHub, but the local folder will not automatically receive future remote changes.
 
 ## Next setup actions
 
